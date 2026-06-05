@@ -1,0 +1,29 @@
+GUIA DE IMAGENS — Grêmio Estudantil
+
+Coloque as imagens nas pastas corretas com os nomes exatos abaixo.
+Formatos aceitos: .jpg ou .png
+
+--- images/members/ (Fotos dos membros) ---
+presidente.jpg         -> Foto do Presidente
+vice-presidente.jpg    -> Foto do Vice-Presidente
+tesoureira.jpg         -> Foto da Tesoureira
+esportes.jpg           -> Foto do responsavel por Esportes
+comunicacao.jpg        -> Foto de Matheus Damian De Bona
+membro-extra.jpg       -> Foto da funcao a confirmar
+suplente-1.jpg         -> Foto do Suplente 1
+suplente-2.jpg         -> Foto do Suplente 2
+
+Tamanho recomendado: 800x800px (quadrado)
+Se nao colocar, aparece placeholder automatico.
+
+--- images/news/ (Imagens dos recados) ---
+boas-vindas.jpg           -> Capa do recado de boas-vindas
+sugestoes-abertas.jpg     -> Capa do canal de sugestoes
+festa-julina-breve.jpg    -> Capa do recado da festa julina
+
+Para novos recados: salve aqui com qualquer nome e
+referencie no HTML em pages/recados.html.
+Tamanho recomendado: 1200x675px (16:9)
+
+--- images/events/ (Eventos futuros) ---
+festa-julina-banner.jpg   -> Banner da Festa Julina
