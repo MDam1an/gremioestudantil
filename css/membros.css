@@ -22,3 +22,14 @@
 @media (max-width: 900px) { .membros-destaque { grid-template-columns: 1fr; } .membro-destaque { grid-template-columns: 1fr 1.4fr; } .membros-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .membro-destaque { grid-template-columns: 1fr; } .membro-destaque-foto-wrap { aspect-ratio: 4/3; } .membros-grid { grid-template-columns: 1fr 1fr; } .suplentes-grid { grid-template-columns: 1fr; } }
 @media (max-width: 400px) { .membros-grid { grid-template-columns: 1fr; } }
+
+/* Logo no header da página de membros */
+.header-logo-img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  margin: 16px 0 20px;
+  display: block;
+}
+@media(max-width:640px){ .header-logo-img { max-width: 220px; } }

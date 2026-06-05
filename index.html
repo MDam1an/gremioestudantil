@@ -18,18 +18,19 @@
   <div class="hero-bg-grid"></div>
   <div class="container">
     <div class="hero-inner">
+
       <div class="hero-left rv">
         <div class="eyebrow volt">Gestão 2026 / 2027</div>
-        <h1 class="hero-title">
-          GRÊMIO<br>
-          <span class="volt">ESTU</span><span class="fire">DANTIL</span>
-        </h1>
+        <!-- Logo principal sem fundo, versão chalk para fundo escuro -->
+        <div class="hero-logo-img">
+          <img src="images/logo/LOGO_chalk.png" alt="Grêmio Estudantil" class="hero-logo-main">
+        </div>
         <p class="hero-sub">
-          A voz dos alunos transformada em ação. Projetos reais, eventos de verdade e mudanças que fazem diferença — feitas por quem estuda aqui.
+          A voz dos alunos transformada em ação. Projetos reais, eventos de verdade e mudanças que fazem diferença.
         </p>
         <div class="hero-actions">
           <a href="pages/projetos.html" class="btn btn-volt">Ver Projetos</a>
-          <a href="pages/sugestoes.html" class="btn btn-outline">Dar Sugestão</a>
+          <a href="pages/sugestoes.html" class="btn btn-outline-hero">Dar Sugestão</a>
         </div>
         <div class="hero-stats">
           <div class="stat-item">
@@ -48,10 +49,11 @@
           </div>
         </div>
       </div>
+
       <div class="hero-right rv d2">
         <div class="hero-card-main">
-          <div class="hc-tag">Grêmio Estudantil</div>
-          <div class="hc-logo">GE<span>.</span></div>
+          <!-- GE26 logo sem fundo, invertido para fundo volt -->
+          <img src="images/logo/GE26_midnight.png" alt="GE 26" class="hero-ge-logo">
           <div class="hc-year">2026 / 2027</div>
         </div>
         <div class="hero-cards-row">
@@ -67,6 +69,7 @@
           </a>
         </div>
       </div>
+
     </div>
   </div>
   <div class="hero-scroll-hint">
@@ -80,11 +83,11 @@
   <div class="container">
     <div class="rv">
       <div class="eyebrow">Sobre o Grêmio</div>
-      <h2 class="section-title">O QUE É O<br><span class="text-fire">GRÊMIO<br>ESTUDANTIL?</span></h2>
+      <h2 class="section-title">O QUE É O GRÊMIO ESTUDANTIL?</h2>
     </div>
     <div class="sobre-grid">
       <div class="sobre-text rv d1">
-        <p>O <strong>Grêmio Estudantil</strong> é o órgão representativo dos alunos, eleito democraticamente, que atua como ponte entre os estudantes e a direção da escola. Nossa missão é garantir que a voz de cada aluno seja ouvida e transformada em ação concreta.</p>
+        <p>O <strong>Grêmio Estudantil</strong> é o órgão representativo dos alunos, eleito democraticamente, que atua como ponte entre os estudantes e a direção da escola.</p>
         <p class="mt-16">Na gestão <strong>2026/2027</strong>, estamos trabalhando para tornar a escola um lugar ainda melhor — com projetos culturais, esportivos e de comunicação que envolvem toda a comunidade escolar.</p>
         <div class="sobre-actions mt-32">
           <a href="pages/membros.html" class="btn btn-volt">Conhecer a Equipe</a>
@@ -95,12 +98,12 @@
         <div class="sobre-card">
           <div class="sc-icon">🗣️</div>
           <h3>Representação</h3>
-          <p>Levamos as ideias, pedidos e reclamações dos alunos direto para a coordenação e direção.</p>
+          <p>Levamos as ideias e reclamações dos alunos direto para a coordenação e direção.</p>
         </div>
         <div class="sobre-card">
           <div class="sc-icon">🎯</div>
           <h3>Projetos Reais</h3>
-          <p>Organizamos eventos, melhorias e iniciativas que impactam o dia a dia de todos na escola.</p>
+          <p>Organizamos eventos e iniciativas que impactam o dia a dia de todos na escola.</p>
         </div>
         <div class="sobre-card">
           <div class="sc-icon">📢</div>
@@ -110,25 +113,28 @@
         <div class="sobre-card">
           <div class="sc-icon">🤝</div>
           <h3>Participação</h3>
-          <p>Acreditamos que a escola muda quando os alunos se envolvem. Aqui, sua voz importa.</p>
+          <p>Aqui sua voz importa. A escola muda quando os alunos se envolvem.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ MEMBROS (PREVIEW) ══ -->
+<!-- ══ MEMBROS PREVIEW (só presidente e vice) ══ -->
 <section class="section membros-preview-section">
   <div class="container">
     <div class="rv">
-      <div class="eyebrow">A Equipe</div>
-      <h2 class="section-title">QUEM FAZ<br><span class="text-volt">ACONTECER</span></h2>
+      <div class="eyebrow">A Liderança</div>
+      <h2 class="section-title">QUEM REPRESENTA VOCÊ</h2>
     </div>
     <div class="membros-preview-grid rv d1">
-      <!-- Presidente -->
+
+      <!-- PRESIDENTE -->
       <div class="membro-card card">
         <div class="membro-foto-wrap">
-          <img src="images/members/presidente.jpg" alt="Presidente" class="membro-foto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="images/members/presidente.jpg" alt="Presidente"
+               class="membro-foto"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="membro-foto-placeholder" style="display:none">GE</div>
         </div>
         <div class="membro-info">
@@ -137,10 +143,13 @@
           <p class="text-muted mt-8">Responsável por liderar o Grêmio e representar os alunos perante a direção.</p>
         </div>
       </div>
-      <!-- Vice -->
+
+      <!-- VICE-PRESIDENTE -->
       <div class="membro-card card">
         <div class="membro-foto-wrap">
-          <img src="images/members/vice-presidente.jpg" alt="Vice-Presidente" class="membro-foto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="images/members/vice-presidente.jpg" alt="Vice-Presidente"
+               class="membro-foto"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="membro-foto-placeholder" style="display:none">GE</div>
         </div>
         <div class="membro-info">
@@ -149,33 +158,23 @@
           <p class="text-muted mt-8">Apoia o presidente e assume o cargo em sua ausência.</p>
         </div>
       </div>
-      <!-- Comunicação -->
-      <div class="membro-card card">
-        <div class="membro-foto-wrap">
-          <img src="images/members/comunicacao.jpg" alt="Comunicação e Marketing" class="membro-foto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="membro-foto-placeholder" style="display:none">MB</div>
-        </div>
-        <div class="membro-info">
-          <div class="badge badge-sky mb-8">Comunicação & Marketing</div>
-          <h3>Matheus Damian De Bona</h3>
-          <p class="text-muted mt-8">Responsável pela identidade visual, redes sociais e comunicação do Grêmio.</p>
-        </div>
-      </div>
+
     </div>
-    <div class="text-center mt-32 rv d3">
+    <div class="text-center mt-32 rv d2">
       <a href="pages/membros.html" class="btn btn-outline">Ver Todos os Membros →</a>
     </div>
   </div>
 </section>
 
-<!-- ══ PROJETOS (PREVIEW) ══ -->
+<!-- ══ PROJETOS PREVIEW ══ -->
 <section class="section projetos-preview-section">
   <div class="container">
     <div class="rv">
-      <div class="eyebrow fire">Projetos & Eventos</div>
-      <h2 class="section-title">O QUE ESTAMOS<br><span class="text-fire">FAZENDO</span></h2>
+      <div class="eyebrow">Projetos & Eventos</div>
+      <h2 class="section-title">O QUE ESTAMOS FAZENDO</h2>
     </div>
     <div class="projetos-preview-grid rv d1">
+
       <div class="projeto-card card">
         <div class="projeto-cover festa-cover">
           <div class="projeto-locked">
@@ -193,6 +192,7 @@
           <a href="pages/festa-julina.html" class="btn btn-ghost mt-24" style="width:100%;justify-content:center">Ver Detalhes →</a>
         </div>
       </div>
+
       <div class="projeto-card card">
         <div class="projeto-cover sugestoes-cover"></div>
         <div class="projeto-body">
@@ -205,6 +205,7 @@
           <a href="pages/sugestoes.html" class="btn btn-volt mt-24" style="width:100%;justify-content:center">Enviar Sugestão →</a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -215,7 +216,7 @@
     <div class="cta-box rv">
       <div class="cta-left">
         <div class="eyebrow white">Sua voz importa</div>
-        <h2>TEM UMA IDEIA<br>OU RECLAMAÇÃO?</h2>
+        <h2>TEM UMA IDEIA OU RECLAMAÇÃO?</h2>
         <p>O canal de sugestões anônimas está aberto. Manda o que você pensa — a gente leva a sério.</p>
       </div>
       <div class="cta-right">
@@ -227,7 +228,6 @@
 </section>
 
 <div id="footer"></div>
-
 <script src="js/components.js"></script>
 <script src="js/main.js"></script>
 <script>

@@ -320,3 +320,34 @@
   .cta-right { width: 100%; }
   .cta-right .btn { width: 100%; justify-content: center; }
 }
+
+/* ── HERO LOGO IMAGE ── */
+.hero-logo-img { margin-bottom: 24px; }
+.hero-logo-main {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  /* PNG transparente — sem fundo */
+  background: transparent;
+}
+.hero-ge-logo {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  margin-bottom: 8px;
+}
+
+/* MEMBROS PREVIEW — só 2 cards, centralizados */
+.membros-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .hero-logo-main { max-width: 100%; }
+  .membros-preview-grid { grid-template-columns: 1fr; max-width: 360px; }
+}
