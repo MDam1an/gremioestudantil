@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recados · Grêmio Estudantil</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* ── FILTROS ── */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+    .filter-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--muted); background: var(--white);
+      cursor: none; transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--ink); color: var(--volt); border-color: var(--ink);
+    }
+
+    /* ── GRID ── */
+    .recados-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+
+    /* ── CARD ── */
+    .recado-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-hard);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .recado-card:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-hard-lg); }
+
+    .recado-img-wrap {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--surface);
+      position: relative;
+    }
+    .recado-img { width: 100%; height: 100%; object-fit: cover; }
+    .recado-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px;
+      background: var(--surface);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .recado-placeholder .ph-ico { font-size: 28px; }
+
+    .recado-body { padding: 18px; }
+    .recado-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 7px;
+    }
+    .recado-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px; letter-spacing: 1px;
+      color: var(--ink); margin-bottom: 7px;
+    }
+    .recado-body p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .recado-tag { margin-top: 10px; }
+
+    /* padrão diagonal na faixa top */
+    .recado-img-wrap::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--volt), var(--fire));
+    }
+
+    @media(max-width:900px){ .recados-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:560px){ .recados-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="page-progress"></div>
+<div id="navbar"></div>
+<div id="scroll-indicator"></div>
+
+<header class="page-header" id="topo" data-label="Recados">
+  <div class="container">
+    <div class="eyebrow white">Comunicados</div>
+    <h1>RECADOS DA ESCOLA</h1>
+    <p>Novidades, avisos e comunicados do Grêmio e da escola — sempre atualizados.</p>
+  </div>
+</header>
+
+<section class="section" id="lista" data-label="Comunicados">
+  <div class="container">
+    <div class="filter-bar rv">
+      <button class="filter-btn active" onclick="filtrar(this,'todos')">Todos</button>
+      <button class="filter-btn" onclick="filtrar(this,'aviso')">📌 Avisos</button>
+      <button class="filter-btn" onclick="filtrar(this,'evento')">🎉 Eventos</button>
+      <button class="filter-btn" onclick="filtrar(this,'gremio')">🏛️ Grêmio</button>
+    </div>
+
+    <div class="recados-grid" id="recados-grid">
+
+      <!--
+      ════════════════════════════════════
+      COMO ADICIONAR NOVO RECADO:
+
+      1. Copie o bloco <div class="recado-card"> abaixo
+      2. Defina data-tag: "aviso", "evento" ou "gremio"
+      3. Coloque a imagem em ../images/news/nome.jpg
+         (tamanho ideal: 1200x675px)
+      4. Preencha data, título e descrição
+      ════════════════════════════════════
+      -->
+
+      <div class="recado-card rv" data-tag="gremio">
+        <div class="recado-img-wrap">
+          <img src="../images/news/boas-vindas.jpg" alt="Boas-vindas" class="recado-img"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="recado-placeholder" style="display:none">
+            <span class="ph-ico">🏛️</span><span>Grêmio</span>
+          </div>
+        </div>
+        <div class="recado-body">
+          <div class="recado-date">Jun 2026</div>
+          <h3>Bem-vindos ao Grêmio 2026/27!</h3>
+          <p>O Grêmio Estudantil deu início à gestão 2026/2027. Estamos aqui para representar vocês e fazer acontecer.</p>
+          <div class="recado-tag"><span class="badge badge-volt">🏛️ Grêmio</span></div>
+        </div>
+      </div>
+
+      <div class="recado-card rv d1" data-tag="gremio">
+        <div class="recado-img-wrap">
+          <img src="../images/news/sugestoes-abertas.jpg" alt="Sugestões" class="recado-img"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="recado-placeholder" style="display:none">
+            <span class="ph-ico">💬</span><span>Canal</span>
+          </div>
+        </div>
+        <div class="recado-body">
+          <div class="recado-date">Jun 2026</div>
+          <h3>Canal de Sugestões Aberto</h3>
+          <p>Mande sua ideia de forma anônima. O Grêmio lê tudo e leva as melhores para a coordenação.</p>
+          <div class="recado-tag"><span class="badge badge-sky">💬 Canal</span></div>
+        </div>
+      </div>
+
+      <div class="recado-card rv d2" data-tag="evento">
+        <div class="recado-img-wrap">
+          <img src="../images/news/festa-julina-breve.jpg" alt="Festa Julina" class="recado-img"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="recado-placeholder" style="display:none">
+            <span class="ph-ico">🎪</span><span>Evento</span>
+          </div>
+        </div>
+        <div class="recado-body">
+          <div class="recado-date">Jun 2026</div>
+          <h3>Festa Julina — Em Breve</h3>
+          <p>Estamos organizando a festa junina da escola. Em breve divulgamos data, local e programação completa.</p>
+          <div class="recado-tag"><span class="badge badge-fire">🎪 Evento</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  renderNavbar();
+  renderFooter();
+  function filtrar(btn, tag) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.recado-card').forEach(c => {
+      c.style.display = (tag === 'todos' || c.dataset.tag === tag) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

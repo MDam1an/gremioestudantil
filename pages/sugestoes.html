@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Canal de Sugestões · Grêmio Estudantil</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    .sugestoes-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-hard-lg);
+    }
+    .form-card-header {
+      background: var(--midnight);
+      padding: 24px 28px;
+      display: flex; align-items: center; gap: 16px;
+      border-bottom: 3px solid var(--volt);
+      /* padrão diagonal */
+      background-image: repeating-linear-gradient(
+        45deg, transparent, transparent 10px,
+        rgba(212,240,0,.03) 10px, rgba(212,240,0,.03) 12px
+      );
+      background-color: var(--midnight);
+    }
+    .form-header-logo { height: 36px; width: auto; background: transparent; }
+    .form-header-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px; letter-spacing: 1px;
+      color: var(--chalk); margin-bottom: 2px;
+    }
+    .form-header-text p {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(247,244,238,.3);
+    }
+    .form-body { padding: 28px; }
+
+    .anon-notice {
+      background: rgba(212,240,0,.1);
+      border: 1px solid var(--volt);
+      border-radius: 6px;
+      padding: 13px 16px; margin-bottom: 24px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .anon-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+    .anon-notice p { font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0; }
+
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted); display: block; margin-bottom: 7px;
+    }
+    .form-select, .form-textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      padding: 11px 14px;
+      font-family: 'Familjen Grotesk', sans-serif;
+      font-size: 15px; color: var(--ink);
+      outline: none; transition: border-color .2s;
+    }
+    .form-select:focus, .form-textarea:focus { border-color: var(--volt); }
+    .form-textarea { resize: vertical; min-height: 130px; }
+    .char-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; color: var(--muted);
+      text-align: right; margin-top: 4px;
+    }
+    .form-submit { width: 100%; justify-content: center; font-size: 16px; padding: 13px; }
+
+    .success-msg {
+      display: none;
+      background: #e8faf0; border: 2px solid #00b894;
+      border-radius: 10px; padding: 24px; text-align: center; margin-top: 16px;
+    }
+    .success-msg h3 { font-family: 'Bebas Neue',sans-serif; font-size: 24px; color: #00b894; letter-spacing:1px; margin-bottom: 8px; }
+    .success-msg p  { font-size: 13px; color: var(--muted); }
+
+    .forms-link {
+      background: var(--surface); border-radius: 8px;
+      padding: 16px; margin-top: 16px; text-align: center;
+      border: 1px solid var(--border);
+    }
+    .forms-link p { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .forms-link a {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--sky); text-decoration: underline;
+    }
+
+    /* SIDEBAR */
+    .info-cards { display: flex; flex-direction: column; gap: 12px; }
+    .info-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow-hard);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .info-card:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-hard-lg); }
+    .info-card-icon { font-size: 24px; margin-bottom: 9px; }
+    .info-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 1px; margin-bottom: 6px;
+    }
+    .info-card p  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* COMO FUNCIONA */
+    .como-section { background: var(--midnight); }
+    .como-steps {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 14px;
+    }
+    .como-step {
+      background: var(--dark-surf);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius); padding: 24px 18px; text-align: center;
+      transition: border-color .2s, transform .2s;
+    }
+    .como-step:hover { border-color: var(--volt); transform: translateY(-4px); }
+    .como-step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px; line-height: 1; color: var(--volt); opacity: .4; margin-bottom: 8px;
+    }
+    .como-step h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 1px; color: var(--chalk); margin-bottom: 8px;
+    }
+    .como-step p { font-size: 13px; color: rgba(247,244,238,.4); line-height: 1.5; }
+
+    @media(max-width:860px){
+      .sugestoes-layout { grid-template-columns: 1fr; }
+      .como-steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:480px){
+      .como-steps { grid-template-columns: 1fr; }
+      .form-card-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div id="page-progress"></div>
+<div id="navbar"></div>
+<div id="scroll-indicator"></div>
+
+<header class="page-header" id="topo" data-label="Sugestões">
+  <div class="container">
+    <div class="eyebrow white">Sua voz importa</div>
+    <h1>CANAL DE SUGESTÕES</h1>
+    <p>Anônimo, seguro e direto. Manda o que você pensa — a gente leva a sério.</p>
+  </div>
+</header>
+
+<section class="section" id="form-sec" data-label="Formulário">
+  <div class="container">
+    <div class="sugestoes-layout">
+
+      <!-- FORM -->
+      <div class="rv">
+        <div class="form-card">
+          <div class="form-card-header">
+            <img src="../images/logo/GE26_chalk.png" alt="GE26" class="form-header-logo"
+                 onerror="this.style.display='none'">
+            <div class="form-header-text">
+              <h2>ENVIE SUA SUGESTÃO</h2>
+              <p>100% anônimo · Grêmio Estudantil 2026</p>
+            </div>
+          </div>
+          <div class="form-body">
+            <div class="anon-notice">
+              <span class="anon-icon">🔒</span>
+              <p><strong>100% anônimo.</strong> Nenhum dado seu é coletado — só recebemos a mensagem e a categoria.</p>
+            </div>
+            <form id="sugestao-form" onsubmit="enviar(event)">
+              <div class="form-group">
+                <label class="form-label" for="categoria">Categoria</label>
+                <select class="form-select" id="categoria" required>
+                  <option value="" disabled selected>Selecione...</option>
+                  <option>🏫 Estrutura da escola</option>
+                  <option>🎉 Eventos e atividades</option>
+                  <option>⚽ Esportes e interclasses</option>
+                  <option>🍽️ Alimentação / cantina</option>
+                  <option>📢 Comunicação do Grêmio</option>
+                  <option>📚 Aulas e professores</option>
+                  <option>💬 Outro assunto</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="mensagem">Sua sugestão ou reclamação</label>
+                <textarea class="form-textarea" id="mensagem"
+                  placeholder="Escreva sua ideia, sugestão ou reclamação..."
+                  maxlength="600"
+                  oninput="document.getElementById('cc').textContent=this.value.length+' / 600'"
+                  required></textarea>
+                <div class="char-count" id="cc">0 / 600</div>
+              </div>
+              <button type="submit" class="btn btn-volt form-submit">💬 Enviar Anonimamente</button>
+            </form>
+            <div class="success-msg" id="ok-msg">
+              <h3>ENVIADO!</h3>
+              <p>Sua sugestão foi recebida. Obrigado por participar — sua voz faz diferença!</p>
+            </div>
+            <div class="forms-link">
+              <p>Prefere usar o Google Forms diretamente?</p>
+              <!--
+                PARA ATIVAR: substitua o # pelo link do seu Google Forms.
+                Crie o formulário em forms.google.com com dois campos:
+                "Categoria" e "Sua sugestão". As respostas chegam automaticamente
+                numa planilha Google Sheets organizada por data e categoria.
+              -->
+              <a href="#" target="_blank" rel="noopener">📋 Abrir formulário externo →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="info-cards rv d2">
+        <div class="info-card">
+          <div class="info-card-icon">🔒</div>
+          <h3>TOTALMENTE ANÔNIMO</h3>
+          <p>Não coletamos nome, e-mail ou qualquer dado pessoal. Só a mensagem chega.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📋</div>
+          <h3>O GRÊMIO LÊ TUDO</h3>
+          <p>Cada sugestão recebida é lida pelos membros e avaliada com atenção — nada é ignorado.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🚀</div>
+          <h3>VIRA AÇÃO</h3>
+          <p>As melhores sugestões são levadas à coordenação e viram projetos ou melhorias reais.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📢</div>
+          <h3>ACOMPANHE</h3>
+          <p>Publicamos nos <a href="recados.html" style="color:var(--fire)">Recados</a> quando uma sugestão virou ação concreta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section como-section" id="como" data-label="Como funciona">
+  <div class="container">
+    <div class="rv">
+      <div class="eyebrow white volt">Transparência</div>
+      <h2 class="section-title on-dark" style="font-size:clamp(32px,5vw,60px);margin-bottom:32px">COMO FUNCIONA</h2>
+    </div>
+    <div class="como-steps rv d1">
+      <div class="como-step">
+        <div class="como-step-num">01</div>
+        <h4>VOCÊ ENVIA</h4>
+        <p>Preenche a categoria e escreve sua sugestão. Sem nome, sem e-mail.</p>
+      </div>
+      <div class="como-step">
+        <div class="como-step-num">02</div>
+        <h4>GRÊMIO RECEBE</h4>
+        <p>As sugestões chegam organizadas por categoria numa planilha acessada só pelo Grêmio.</p>
+      </div>
+      <div class="como-step">
+        <div class="como-step-num">03</div>
+        <h4>AVALIAMOS</h4>
+        <p>Os membros se reúnem, leem tudo e selecionam o que pode ser levado adiante.</p>
+      </div>
+      <div class="como-step">
+        <div class="como-step-num">04</div>
+        <h4>AÇÃO REAL</h4>
+        <p>A sugestão vai para a coordenação e o resultado é publicado nos Recados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  renderNavbar();
+  renderFooter();
+
+  function enviar(e) {
+    e.preventDefault();
+    /*
+    ── INTEGRAÇÃO GOOGLE FORMS ──────────────────────
+    1. Crie um Google Forms (forms.google.com)
+       - Campo 1: "Categoria" (lista suspensa)
+       - Campo 2: "Sua sugestão" (parágrafo)
+    2. Clique nos 3 pontinhos > "Obter link pré-preenchido"
+    3. Preencha os campos e copie o link gerado
+    4. O link terá: ?entry.XXXXXXXXX=
+    5. Substitua os valores abaixo e descomente:
+
+    const URL   = 'https://docs.google.com/forms/d/e/SEU_ID/formResponse';
+    const E_CAT = 'entry.0000000000';
+    const E_MSG = 'entry.1111111111';
+    const body  = new URLSearchParams();
+    body.append(E_CAT, document.getElementById('categoria').value);
+    body.append(E_MSG, document.getElementById('mensagem').value);
+    fetch(URL, { method:'POST', mode:'no-cors', body });
+    ─────────────────────────────────────────────── */
+
+    document.getElementById('sugestao-form').style.display = 'none';
+    document.getElementById('ok-msg').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('sugestao-form').reset();
+      document.getElementById('sugestao-form').style.display = 'block';
+      document.getElementById('ok-msg').style.display = 'none';
+      document.getElementById('cc').textContent = '0 / 600';
+    }, 5000);
+  }
+</script>
+</body>
+</html>

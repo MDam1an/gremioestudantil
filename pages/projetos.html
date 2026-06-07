@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projetos & Eventos · Grêmio Estudantil</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    .projetos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .projeto-card-full {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-hard-lg);
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .projeto-card-full:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--ink); }
+
+    .projeto-cover-full {
+      height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .festa-bg {
+      background: linear-gradient(135deg, #1a0c04, #2a1205);
+      background-image: repeating-linear-gradient(
+        45deg, transparent, transparent 10px,
+        rgba(255,61,0,.04) 10px, rgba(255,61,0,.04) 12px
+      );
+    }
+    .sugestoes-bg {
+      background: var(--volt);
+      background-image: repeating-linear-gradient(
+        45deg, transparent, transparent 10px,
+        rgba(0,0,0,.04) 10px, rgba(0,0,0,.04) 12px
+      );
+    }
+    .cover-emoji { font-size: 72px; position: relative; z-index: 1; }
+    .locked-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.65);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+    }
+    .locked-overlay .lock-big { font-size: 52px; }
+    .locked-overlay p {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    .projeto-body-full { padding: 32px; }
+    .projeto-body-full h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: 1px; color: var(--ink);
+      margin: 10px 0 12px;
+    }
+    .projeto-body-full p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .status-bar {
+      background: var(--surface);
+      border-radius: 8px; padding: 14px 18px;
+      margin-top: 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      border: 1px solid var(--border);
+    }
+    .status-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+    }
+    .status-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 1px;
+    }
+    .projeto-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    @media(max-width:700px){ .projetos-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="page-progress"></div>
+<div id="navbar"></div>
+<div id="scroll-indicator"></div>
+
+<header class="page-header" id="topo" data-label="Projetos">
+  <div class="container">
+    <div class="eyebrow white">O que estamos fazendo</div>
+    <h1>PROJETOS E EVENTOS</h1>
+    <p>Acompanhe tudo que o Grêmio está organizando para a escola em 2026/2027.</p>
+  </div>
+</header>
+
+<section class="section" id="lista" data-label="Lista">
+  <div class="container">
+    <div class="projetos-grid">
+
+      <div class="projeto-card-full rv">
+        <div class="projeto-cover-full festa-bg">
+          <span class="cover-emoji">🎪</span>
+          <div class="locked-overlay">
+            <span class="lock-big">🔒</span>
+            <p>Em breve — aguarde!</p>
+          </div>
+        </div>
+        <div class="projeto-body-full">
+          <div class="flex items-center gap-8 mb-8">
+            <span class="badge badge-muted">Em breve</span>
+            <span class="badge badge-fire">Evento</span>
+          </div>
+          <h2>Festa Julina</h2>
+          <p>A maior festa junina da escola está a caminho! Estamos organizando tudo para que seja um evento incrível. Em breve teremos data, local e toda a programação.</p>
+          <div class="status-bar">
+            <span class="status-label">Status</span>
+            <span class="status-val text-fire">Em Organização</span>
+          </div>
+          <div class="projeto-actions">
+            <a href="festa-julina.html" class="btn btn-outline">Ver Página do Evento →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card-full rv d1">
+        <div class="projeto-cover-full sugestoes-bg">
+          <span class="cover-emoji">💬</span>
+        </div>
+        <div class="projeto-body-full">
+          <div class="flex items-center gap-8 mb-8">
+            <span class="badge badge-volt">Ativo</span>
+            <span class="badge badge-sky">Canal Permanente</span>
+          </div>
+          <h2>Canal de Sugestões Anônimas</h2>
+          <p>Qualquer aluno pode mandar ideias, reclamações ou pedidos de forma totalmente anônima. O Grêmio lê tudo, seleciona e leva as melhores para a coordenação.</p>
+          <div class="status-bar">
+            <span class="status-label">Status</span>
+            <span class="status-val text-volt">Aberto para envios</span>
+          </div>
+          <div class="projeto-actions">
+            <a href="sugestoes.html" class="btn btn-volt">💬 Enviar Sugestão →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script> renderNavbar(); renderFooter(); </script>
+</body>
+</html>

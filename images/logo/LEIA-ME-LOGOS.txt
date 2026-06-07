@@ -1,0 +1,33 @@
+LOGOS DO GRÊMIO ESTUDANTIL
+Coloque os arquivos PNG nesta pasta com os nomes EXATOS abaixo.
+Todos devem ser PNG sem fundo (transparente).
+
+--- Sigla GE26 ---
+GE26_chalk.png      -> fundo escuro (letras brancas/claras)
+GE26_fire.png       -> versão laranja
+GE26_midnight.png   -> versão preta/escura
+GE26_sky.png        -> versão azul ciano
+GE26_slate.png      -> versão cinza
+GE26_volt.png       -> versão verde volt
+
+--- Palavra GRÊMIO isolada ---
+GRÊMIO_chalk.png
+GRÊMIO_fire.png
+GRÊMIO_midnight.png
+GRÊMIO_sky.png
+GRÊMIO_slate.png
+GRÊMIO_volt.png
+
+--- Logo completo (GRÊMIO ESTUDANTIL) ---
+LOGO_chalk.png      -> para usar em fundos escuros
+LOGO_fire.png
+LOGO_midnight.png   -> para usar em fundos claros
+LOGO_sky.png
+LOGO_slate.png
+LOGO_volt.png
+
+ONDE CADA UM É USADO NO SITE:
+- index.html hero:        LOGO_chalk.png  (fundo escuro do hero)
+- index.html card volt:   GE26_midnight.png (fundo volt)
+- membros header:         GRÊMIO_chalk.png  (header escuro)
+- sugestoes header:       GE26_chalk.png
